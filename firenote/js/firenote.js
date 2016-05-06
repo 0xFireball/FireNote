@@ -21,7 +21,12 @@ class FireNote {
     }
     switchToNote(sectionId, noteId) {
         let savedNotebook = this._savedNotebook;
-        $("#titlebar").html(savedNotebook.sections[sectionId].notes[noteId].noteName);
+        let currentNote = savedNotebook.sections[sectionId].notes[noteId];
+        this._currentNote = currentNote;
+        $("#titlebar").html(currentNote.noteName);
+    }
+    getCurrentNote() {
+        return this._currentNote;
     }
 }
 jQuery.fn.selectText = function () {
@@ -50,7 +55,9 @@ $("#rename-note-btn").click(function () {
     titleBar.prop("contenteditable", true);
     titleBar.focus();
     titleBar.blur(() => {
+        let newTitle = titleBar.text();
         titleBar.prop("contenteditable", false);
+        fireNote.getCurrentNote().noteName = newTitle;
     });
     titleBar.selectText();
     titleBar.keypress(function (e) { return e.which != 13; });
