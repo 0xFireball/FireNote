@@ -1,7 +1,11 @@
-(function($){
-  $(function(){
+$("document").ready(function () {
+  $('.button-collapse').sideNav();
+});
 
-    $('.button-collapse').sideNav();
+function initTinyMce(elementSelector) {
+  tinymce.init({
+    selector: elementSelector
+  });
+}
 
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
+initTinyMce("#editarea");
