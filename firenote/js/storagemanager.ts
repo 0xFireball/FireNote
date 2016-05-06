@@ -16,14 +16,26 @@ class NotebookLoader {
     }
     reinitializeNotebook() {
         //Generate an empty notebook
-        let defaultNotebook = new Notebook() ;
-        localStorage.setItem(savedNotesLocalStorageKey, SerializationHelper.serialize(defaultNotebook));
+        let defaultNotebook = new Notebook();
+        defaultNotebook.notebookName = "Notebook1";
+        defaultNotebook.sections = new Array<NoteSection>();
+        let defaultNotebookSection = new NoteSection();
+        let defaultNote = new Note();
+        defaultNote.noteName = "Welcome to FireNote!";
+        defaultNotebookSection.notes = new Array<Note>();
+        defaultNotebookSection.notes.push(defaultNote);
+        defaultNotebook.sections.push(defaultNotebookSection);
+        let serializedNotebook: string = SerializationHelper.serialize(defaultNotebook);
+        localStorage.setItem(savedNotesLocalStorageKey, serializedNotebook);
     }
-    loadNotebook() {
+    loadNotebook() : Notebook {
         let existingNotes: Notebook = null;
         switch (this._noteStorageType) {
             case NoteStorageType.LocalStorage:
-                let existingNotes = SerializationHelper.toInstance(new Notebook(), localStorage.getItem(savedNotesLocalStorageKey));
+                let savedNoteData: string = localStorage.getItem(savedNotesLocalStorageKey);
+                if (!savedNoteData)
+                    break;
+                existingNotes = SerializationHelper.toInstance(new Notebook(), savedNoteData);
                 break;
         }
         if (!existingNotes) {
@@ -36,7 +48,7 @@ class NotebookLoader {
 }
 
 class StorageManager {
-    _notebookLoader: NotebookLoader;
+    private _notebookLoader: NotebookLoader;
     private initialize() {
         if (is_nw()) {
             //Desktop app, use file storage
@@ -50,7 +62,7 @@ class StorageManager {
     constructor() {
         this.initialize();
     }
-    loadNotebook() {
+    loadNotebook() : Notebook {
         return this._notebookLoader.loadNotebook();
     }
 }

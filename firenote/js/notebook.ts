@@ -1,6 +1,5 @@
 class Note {
     noteName: string;
-    noteUid: string;
 }
 
 class NoteSection {

@@ -13,13 +13,25 @@ class NotebookLoader {
     reinitializeNotebook() {
         //Generate an empty notebook
         let defaultNotebook = new Notebook();
-        localStorage.setItem(savedNotesLocalStorageKey, SerializationHelper.serialize(defaultNotebook));
+        defaultNotebook.notebookName = "Notebook1";
+        defaultNotebook.sections = new Array();
+        let defaultNotebookSection = new NoteSection();
+        let defaultNote = new Note();
+        defaultNote.noteName = "Welcome to FireNote!";
+        defaultNotebookSection.notes = new Array();
+        defaultNotebookSection.notes.push(defaultNote);
+        defaultNotebook.sections.push(defaultNotebookSection);
+        let serializedNotebook = SerializationHelper.serialize(defaultNotebook);
+        localStorage.setItem(savedNotesLocalStorageKey, serializedNotebook);
     }
     loadNotebook() {
         let existingNotes = null;
         switch (this._noteStorageType) {
             case NoteStorageType.LocalStorage:
-                let existingNotes = SerializationHelper.toInstance(new Notebook(), localStorage.getItem(savedNotesLocalStorageKey));
+                let savedNoteData = localStorage.getItem(savedNotesLocalStorageKey);
+                if (!savedNoteData)
+                    break;
+                existingNotes = SerializationHelper.toInstance(new Notebook(), savedNoteData);
                 break;
         }
         if (!existingNotes) {

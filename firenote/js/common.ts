@@ -1,5 +1,12 @@
+String.prototype["format"] = function() {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function(match, number) {
+        return typeof args[number] != 'undefined' ? args[number] : match;
+    });
+};
+
 class SerializationHelper {
-    static toInstance<T>(obj: T, json: string) : T {
+    static toInstance<T>(obj: T, json: string): T {
         var jsonObj = JSON.parse(json);
 
         if (typeof obj["fromJSON"] === "function") {
@@ -18,10 +25,10 @@ class SerializationHelper {
     }
 }
 
-function is_nw(){
-    try{
+function is_nw() {
+    try {
         return (typeof require('nw.gui') !== "undefined");
-    } catch (e){
+    } catch (e) {
         return false;
     }
 }

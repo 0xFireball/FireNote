@@ -1,14 +1,24 @@
 /// <reference path="jquery.d.ts" />
 /// <reference path="lib.d.ts" />
 /// <reference path="storagemanager.ts" />
+/// <reference path="notebook.ts" />
 
 class FireNote {
     private _storageHandle: StorageManager;
     constructor(storageManager: StorageManager) {
         this._storageHandle = storageManager;
     }
+    private layoutUiWithNotes(savedNotebook: Notebook) {
+        savedNotebook.sections.forEach(notebookSection => {
+            notebookSection.notes.forEach(note => {
+                //Load each note
+                $("#note-list-nav").append('<li><a href="javascript:switchToNote({2}, {1})" >{0}</a></li>'.format(note.noteName, notebookSection.notes.indexOf(note), savedNotebook.sections.indexOf(notebookSection)));
+            });
+        });
+    }
     loadNotes() {
-
+        let savedNotebook: Notebook = this._storageHandle.loadNotebook();
+        this.layoutUiWithNotes(savedNotebook);
     }
 }
 
@@ -47,5 +57,9 @@ $("#rename-note-btn").click(function() {
 });
 
 var currentStorageManager = new StorageManager();
-var fireNote = new FireNote();
+var fireNote = new FireNote(currentStorageManager);
 fireNote.loadNotes();
+
+function switchToNote(sectionId: number, noteId: number) {
+    
+}
