@@ -19,8 +19,15 @@ class FireNote {
         this._savedNotebook = this._storageHandle.loadNotebook();
         this.layoutUiWithNotes();
     }
+    loadNotesFromCache() {
+        this.layoutUiWithNotes();
+    }
     saveNotes() {
         this._storageHandle.saveNotebook(this._savedNotebook);
+    }
+    refreshNotes() {
+        this.saveNotes();
+        this.loadNotesFromCache();
     }
     switchToNote(sectionId, noteId) {
         let savedNotebook = this._savedNotebook;
@@ -35,7 +42,6 @@ class FireNote {
 jQuery.fn.selectText = function () {
     var doc = document;
     var element = this[0];
-    console.log(this, element);
     if (doc.body.createTextRange) {
         var range = document.body.createTextRange();
         range.moveToElementText(element);
@@ -61,7 +67,7 @@ $("#rename-note-btn").click(function () {
         let newTitle = titleBar.text();
         titleBar.prop("contenteditable", false);
         fireNote.getCurrentNote().noteName = newTitle;
-        fireNote.saveNotes();
+        fireNote.refreshNotes();
     });
     titleBar.selectText();
     titleBar.keypress(function (e) { return e.which != 13; });

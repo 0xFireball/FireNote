@@ -60,5 +60,8 @@ class StorageManager {
     loadNotebook() {
         return this._notebookLoader.loadNotebook();
     }
+    saveNotebook(notebookToSave) {
+        this._notebookLoader.saveNotebook(notebookToSave);
+    }
 }
 //# sourceMappingURL=storagemanager.js.map

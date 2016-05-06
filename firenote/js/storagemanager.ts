@@ -68,4 +68,7 @@ class StorageManager {
     loadNotebook(): Notebook {
         return this._notebookLoader.loadNotebook();
     }
+    saveNotebook(notebookToSave: Notebook) {
+        this._notebookLoader.saveNotebook(notebookToSave);
+    }
 }
