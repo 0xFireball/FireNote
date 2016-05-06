@@ -68,6 +68,7 @@ $("#rename-note-btn").click(function() {
         let newTitle: string = titleBar.text();
         titleBar.prop("contenteditable", false);
         fireNote.getCurrentNote().noteName = newTitle;
+        fireNote.saveNotes();
     });
     titleBar.selectText();
     titleBar.keypress(function(e) { return e.which != 13; });
