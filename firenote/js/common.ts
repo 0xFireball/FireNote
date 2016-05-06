@@ -1,26 +1,27 @@
 class SerializationHelper {
-    static toInstance(obj, json) {
+    static toInstance<T>(obj: T, json: string) : T {
         var jsonObj = JSON.parse(json);
+
         if (typeof obj["fromJSON"] === "function") {
             obj["fromJSON"](jsonObj);
         }
         else {
             for (var propName in jsonObj) {
-                obj[propName] = jsonObj[propName];
+                obj[propName] = jsonObj[propName]
             }
         }
+
         return obj;
     }
-    static serialize(obj) {
+    static serialize(obj): string {
         return JSON.stringify(obj);
     }
 }
-function is_nw() {
-    try {
+
+function is_nw(){
+    try{
         return (typeof require('nw.gui') !== "undefined");
-    }
-    catch (e) {
+    } catch (e){
         return false;
     }
 }
-//# sourceMappingURL=common.js.map

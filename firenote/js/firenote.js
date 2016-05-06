@@ -2,6 +2,9 @@
 /// <reference path="lib.d.ts" />
 /// <reference path="storagemanager.ts" />
 class FireNote {
+    constructor(storageManager) {
+        this._storageHandle = storageManager;
+    }
     loadNotes() {
     }
 }
@@ -36,6 +39,7 @@ $("#rename-note-btn").click(function () {
     titleBar.selectText();
     titleBar.keypress(function (e) { return e.which != 13; });
 });
+var currentStorageManager = new StorageManager();
 var fireNote = new FireNote();
 fireNote.loadNotes();
 //# sourceMappingURL=firenote.js.map
