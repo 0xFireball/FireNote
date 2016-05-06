@@ -23,6 +23,9 @@ class FireNote {
         this._savedNotebook = this._storageHandle.loadNotebook();
         this.layoutUiWithNotes();
     }
+    saveNotes() {
+        this._storageHandle.saveNotebook(this._savedNotebook);
+    }
     switchToNote(sectionId: number, noteId: number) {
         let savedNotebook = this._savedNotebook;
         let currentNote = savedNotebook.sections[sectionId].notes[noteId];

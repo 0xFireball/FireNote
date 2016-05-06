@@ -25,10 +25,9 @@ class NotebookLoader {
         defaultNotebookSection.notes = new Array<Note>();
         defaultNotebookSection.notes.push(defaultNote);
         defaultNotebook.sections.push(defaultNotebookSection);
-        let serializedNotebook: string = SerializationHelper.serialize(defaultNotebook);
-        localStorage.setItem(savedNotesLocalStorageKey, serializedNotebook);
+        this.saveNotebook(defaultNotebook);
     }
-    loadNotebook() : Notebook {
+    loadNotebook(): Notebook {
         let existingNotes: Notebook = null;
         switch (this._noteStorageType) {
             case NoteStorageType.LocalStorage:
@@ -44,6 +43,10 @@ class NotebookLoader {
             existingNotes = this.loadNotebook();
         }
         return existingNotes;
+    }
+    saveNotebook(notebookToSave: Notebook) {
+        let serializedNotebook: string = SerializationHelper.serialize(notebookToSave);
+        localStorage.setItem(savedNotesLocalStorageKey, serializedNotebook);
     }
 }
 
@@ -62,7 +65,7 @@ class StorageManager {
     constructor() {
         this.initialize();
     }
-    loadNotebook() : Notebook {
+    loadNotebook(): Notebook {
         return this._notebookLoader.loadNotebook();
     }
 }
