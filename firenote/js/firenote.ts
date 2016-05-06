@@ -5,10 +5,12 @@
 
 class FireNote {
     private _storageHandle: StorageManager;
+    private _savedNotebook: Notebook;
     constructor(storageManager: StorageManager) {
         this._storageHandle = storageManager;
     }
-    private layoutUiWithNotes(savedNotebook: Notebook) {
+    private layoutUiWithNotes() {
+        let savedNotebook = this._savedNotebook;
         savedNotebook.sections.forEach(notebookSection => {
             notebookSection.notes.forEach(note => {
                 //Load each note
@@ -17,8 +19,12 @@ class FireNote {
         });
     }
     loadNotes() {
-        let savedNotebook: Notebook = this._storageHandle.loadNotebook();
-        this.layoutUiWithNotes(savedNotebook);
+        this._savedNotebook = this._storageHandle.loadNotebook();
+        this.layoutUiWithNotes();
+    }
+    switchToNote(sectionId: number, noteId: number) {
+        let savedNotebook = this._savedNotebook;
+        $("#titlebar").html(savedNotebook.sections[sectionId].notes[noteId].noteName);
     }
 }
 
@@ -61,5 +67,5 @@ var fireNote = new FireNote(currentStorageManager);
 fireNote.loadNotes();
 
 function switchToNote(sectionId: number, noteId: number) {
-    
+    fireNote.switchToNote(sectionId, noteId);
 }

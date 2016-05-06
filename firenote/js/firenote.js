@@ -6,7 +6,8 @@ class FireNote {
     constructor(storageManager) {
         this._storageHandle = storageManager;
     }
-    layoutUiWithNotes(savedNotebook) {
+    layoutUiWithNotes() {
+        let savedNotebook = this._savedNotebook;
         savedNotebook.sections.forEach(notebookSection => {
             notebookSection.notes.forEach(note => {
                 //Load each note
@@ -15,8 +16,12 @@ class FireNote {
         });
     }
     loadNotes() {
-        let savedNotebook = this._storageHandle.loadNotebook();
-        this.layoutUiWithNotes(savedNotebook);
+        this._savedNotebook = this._storageHandle.loadNotebook();
+        this.layoutUiWithNotes();
+    }
+    switchToNote(sectionId, noteId) {
+        let savedNotebook = this._savedNotebook;
+        $("#titlebar").html(savedNotebook.sections[sectionId].notes[noteId].noteName);
     }
 }
 jQuery.fn.selectText = function () {
@@ -54,6 +59,6 @@ var currentStorageManager = new StorageManager();
 var fireNote = new FireNote(currentStorageManager);
 fireNote.loadNotes();
 function switchToNote(sectionId, noteId) {
-    alert(noteId);
+    fireNote.switchToNote(sectionId, noteId);
 }
 //# sourceMappingURL=firenote.js.map
