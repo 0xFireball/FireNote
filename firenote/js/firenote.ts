@@ -2,10 +2,9 @@
 /// <reference path="lib.d.ts" />
 
 class FireNote {
-    loadNotes()
-    {
-        
-    } 
+    loadNotes() {
+
+    }
 }
 
 jQuery.fn.selectText = function() {
@@ -35,6 +34,9 @@ $("#rename-note-btn").click(function() {
     var titleBar = $("#titlebar");
     titleBar.prop("contenteditable", true);
     titleBar.focus();
+    titleBar.blur(() => {
+        titleBar.prop("contenteditable", false);
+    });
     titleBar.selectText();
     titleBar.keypress(function(e) { return e.which != 13; });
 });
