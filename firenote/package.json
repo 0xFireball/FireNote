@@ -13,7 +13,7 @@
         "min_height": 320,
         "height": 600,
         "toolbar": false,
-        "icon": "assets/img/notestorm.png"
+        "icon": "img/firenote.png"
     },
     "license": "GPL-3.0"
 }

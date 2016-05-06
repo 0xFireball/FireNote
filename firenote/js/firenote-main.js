@@ -1,10 +1,21 @@
 $("document").ready(function () {
-  $('.button-collapse').sideNav();
+  $('.button-collapse').sideNav(
+    {
+      closeOnClick: true
+    }
+  );
+  $('.button-collapse').sideNav('hide');
+});
+
+$("#titlebar").click(function() {
+  $('.button-collapse').sideNav('show');
 });
 
 function initTinyMce(elementSelector) {
   tinymce.init({
-    selector: elementSelector
+    selector: elementSelector,
+    plugins: 'code',
+    menubar: false
   });
 }
 
