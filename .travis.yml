@@ -24,6 +24,6 @@ deploy:
   provider: releases
   api_key:
     secure: dTzUo8S2Bm15DXuxyZS7MUNBCr9AaGOdnaJRAeXZyXX4NY6hGRkBmjwmHx8psf4ZDURQ03TZGfReRrl4ohD64GrKxAq/rWuIW8q7yuKYjAiEqRAJ79ZO8U+eAVXnIobvTykSSFdCjpo1obx6XqZrki/I/7nSJ+nIjBgTPf96bTTcj+VFz/5GXvHNzPukfwP57quA2xdaNHbv3XPLo73tTABo4MYFao08Lp8q2+6p3Zi3Nf2cdUEPeWvheqbjD4+vzPQASxM+qy3LJIa7C+Xi7GtbNbHS7FMTfhL6yWzZwyp9h91wJdTstLPwozcfBPU1mVRVf0LbcSgc0Czf5lMK6EeGCfSezNd1mjnQ3d3VZ35MS+AyULzU64TA7Ny7WU4SdZCo/1ZfJWX4acqi3t+9ZWgpIoWd7tRBIxC39GMOjzxVyg/+BwoHIIP6DNIlHOpBzfh1zjAvDubXauVZ8/jAOOVLKdJ76xD9DIzP6Xi6uVu+UkciVk1AMFYeXfS+6jMjjXTneTDkoKyq+LWWvgalcuUzk2O1mU9aSwNVpnyuwp8EynsnLlTUiZ6KqayRi2I7oLo72OA5xcP6AxNNh/arkWMDOxcVTZuVRlICyh/Cp5XhlJiA6FtYzWXkto66EKShtTYY9t57qyTXsYkOBTe+g22ECMvF1D+JaydyfNNVNFA=
-  file: firenote/build/darwin64/FireNote.app.zip
+  file: build/darwin64/FireNote.app.zip
   on:
     repo: 0xFireball/FireNote
