@@ -1,5 +1,6 @@
 class Note {
-    noteName: string;
+    noteName: string = "Untitled1";
+    noteInnerHtml: string = "";
 }
 
 class NoteSection {

@@ -7,6 +7,7 @@ class FireNote {
         this._storageHandle = storageManager;
     }
     layoutUiWithNotes() {
+        $("#note-list-nav").empty();
         let savedNotebook = this._savedNotebook;
         savedNotebook.sections.forEach(notebookSection => {
             notebookSection.notes.forEach(note => {
@@ -14,6 +15,7 @@ class FireNote {
                 $("#note-list-nav").append('<li><a href="javascript:switchToNote({2}, {1})" >{0}</a></li>'.format(note.noteName, notebookSection.notes.indexOf(note), savedNotebook.sections.indexOf(notebookSection)));
             });
         });
+        $("#note-list-nav").append('<li><a href="javascript:createNewNote()" class="red lighten-3">New Note</a></li>');
     }
     loadNotes() {
         this._savedNotebook = this._storageHandle.loadNotebook();
@@ -21,6 +23,17 @@ class FireNote {
     }
     loadNotesFromCache() {
         this.layoutUiWithNotes();
+    }
+    saveCurrentEditorContent() {
+        if (this._currentNote) {
+            let editorContent = tinyMCE.activeEditor.getContent();
+            this._currentNote.noteInnerHtml = editorContent;
+            fireNote.saveNotes();
+        }
+    }
+    loadCurrentEditorContent() {
+        let contentToLoad = this._currentNote.noteInnerHtml;
+        tinyMCE.activeEditor.setContent(contentToLoad);
     }
     saveNotes() {
         this._storageHandle.saveNotebook(this._savedNotebook);
@@ -34,6 +47,7 @@ class FireNote {
         let currentNote = savedNotebook.sections[sectionId].notes[noteId];
         this._currentNote = currentNote;
         $("#titlebar").html(currentNote.noteName);
+        this.loadCurrentEditorContent();
     }
     getCurrentNote() {
         return this._currentNote;
@@ -76,6 +90,14 @@ var currentStorageManager = new StorageManager();
 var fireNote = new FireNote(currentStorageManager);
 fireNote.loadNotes();
 function switchToNote(sectionId, noteId) {
+    fireNote.saveCurrentEditorContent();
+    $("#editing-area").show();
+    $("#intro").hide();
     fireNote.switchToNote(sectionId, noteId);
 }
+function createNewNote() {
+}
+setInterval(function () {
+    fireNote.saveCurrentEditorContent();
+}, 1000);
 //# sourceMappingURL=firenote.js.map

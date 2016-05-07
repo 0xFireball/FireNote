@@ -4,8 +4,9 @@ $("document").ready(function() {
             closeOnClick: true
         }
     );
+    $("#editing-area").hide();
+    $("#note-list-nav").addClass("fixed");
     $('.button-collapse').sideNav('hide');
-    $("#note-list-nav").append('<li><a href="javascript:void(0)" class="red lighten-3">New Note</a></li>');
 });
 
 $("#titlebar").click(function() {

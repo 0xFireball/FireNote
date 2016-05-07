@@ -1,4 +1,8 @@
 class Note {
+    constructor() {
+        this.noteName = "Untitled1";
+        this.noteInnerHtml = "";
+    }
 }
 class NoteSection {
 }
