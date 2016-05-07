@@ -20,5 +20,8 @@ install:
   - npm install electron-packager -g
   - npm install
 
+before_script:
+  - cd project
+
 script:
   - ./darwin-build-vagrant.sh
