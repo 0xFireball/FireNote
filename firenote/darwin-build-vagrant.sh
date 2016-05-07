@@ -20,3 +20,4 @@ cd $CURRENTPATH
 echo "Cleaning Up..."
 rm -Rf BUILD_DIR$APPNAME/build/
 echo "The output can be found in /build/darwin64 if the build succeeded, and the file should be called $APPNAME.app.zip"
+echo "Working Directory: $(pwd)"
