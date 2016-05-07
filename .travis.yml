@@ -1,9 +1,12 @@
-language:
-  - ruby
+language: node
 
 matrix:
   include:
     - os: linux
+    
+env:
+  global:
+  - NODE_VERSION=5
 
 cache:
   directories:
