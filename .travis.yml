@@ -13,6 +13,7 @@ cache:
   - $HOME/.npm
 
 install:
+  - cd firenote
   - nvm install $NODE_VERSION
   - npm install npm -g
   - npm prune
@@ -20,5 +21,4 @@ install:
   - npm install
 
 script:
-  - cd firenote
   - ./darwin-build-vagrant.sh
