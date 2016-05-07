@@ -1,11 +1,29 @@
 {
-	"build": {
-	  "app-bundle-id": "com.0xFireball.FireNote",
-	  "app-category-type": "FireNote.productivity.notes"
-	},
-	"scripts": {
-	  "postinstall": "install-app-deps",
-	  "pack": "build",
-	  "dist": "build"
-	}
+  "build": {
+    "app-bundle-id": "com.0xFireball.FireNote",
+    "app-category-type": "FireNote.productivity.notes"
+  },
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "pack": "build",
+    "dist": "build"
+  },
+  "devDependencies": {
+    "electron-builder": "^3.17.1"
+  },
+  "name": "firenote",
+  "description": "FireNote - a minimalistic, cross-platform note editor. Available for the Web, Windows, OS X, Linux,\r and soon, iOS and Android.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xFireball/FireNote.git"
+  },
+  "author": "0xFireball",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/0xFireball/FireNote/issues"
+  },
+  "homepage": "https://github.com/0xFireball/FireNote#readme"
 }
