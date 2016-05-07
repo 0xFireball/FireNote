@@ -86,6 +86,15 @@ class FireNote {
     }
 }
 
+$.fn.extend({
+    animateCss: function (animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        $(this).addClass('animated ' + animationName).one(animationEnd, function () {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});
+
 jQuery.fn.selectText = function () {
     var doc = document;
     var element = this[0];
@@ -116,6 +125,13 @@ $("#rename-note-btn").click(function () {
     titleBar.keypress(function (e) { return e.which != 13; });
 });
 
+function reShowEditor() {
+    $("#intro").hide();
+    $("#editing-area")
+        .show()
+        .animateCss('fadeInLeftBig');
+    $("#note-actions").fadeIn();
+}
 
 function showIntro() {
     $("#editing-area").hide();
@@ -145,7 +161,7 @@ $("#delete-note-btn").click(function () {
 
 function switchToNote(sectionId: number, noteId: number) {
     fireNote.saveCurrentEditorContent();
-    hideIntro();
+    reShowEditor();
     fireNote.switchToNote(sectionId, noteId);
 }
 
