@@ -20,8 +20,5 @@ install:
   - npm install electron-packager -g
   - npm install
 
-before_script:
-  - cd firenote
-
 script:
   - ./darwin-build-vagrant.sh
