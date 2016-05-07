@@ -1,1 +1,1 @@
-electron-packager . FireNote --platform=darwin,linux,win32 --arch=all --out=build/
+electron-packager . FireNote --platform=linux,win32 --arch=all --out=build/

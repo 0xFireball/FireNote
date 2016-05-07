@@ -1,0 +1,3 @@
+a, .button, textarea {
+  -webkit-app-region: no-drag;
+}
