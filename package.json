@@ -9,7 +9,8 @@
     "dist": "build"
   },
   "devDependencies": {
-    "electron-builder": "^3.17.1"
+    "electron-builder": "^3.17.1",
+    "electron-prebuilt": "^0.37.8"
   },
   "name": "firenote",
   "description": "FireNote - a minimalistic, cross-platform note editor. Available for the Web, Windows, OS X, Linux,\r and soon, iOS and Android.",
