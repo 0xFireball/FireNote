@@ -22,7 +22,7 @@ app.on('window-all-closed', function () {
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
     // Create the browser window.
-    mainWindow = new BrowserWindow({ width: 800, height: 600, icon: __dirname + "/img/firenote.png", webPreferences: { nodeIntegration: false }, frame: false});
+    mainWindow = new BrowserWindow({ width: 800, height: 600, icon: __dirname + "/img/FireNote.png", webPreferences: { nodeIntegration: false }, frame: false});
 
     // and load the index.html of the app.
     mainWindow.loadURL('file://' + __dirname + '/index.html');
