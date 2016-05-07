@@ -17,7 +17,7 @@ cd $BUILD_DIR$APPNAME/build/$APPNAME-darwin-x64/
 
 ARCPATH="$CURRENTPATH/$OUTPATH$APPNAME.app.zip"
 echo "Compressing to $ARCPATH"
-zip -r -9 --symlinks $ARCPATH $APPNAME.app
+zip -r -9 --symlinks $ARCPATH $APPNAME.app > /dev/null
 cd $CURRENTPATH
 
 echo "Cleaning Up..."
