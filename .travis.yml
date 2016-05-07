@@ -21,7 +21,7 @@ install:
   - npm install
 
 before_script:
-  - cd project
+  - cd firenote
 
 script:
   - ./darwin-build-vagrant.sh
