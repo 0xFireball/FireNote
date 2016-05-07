@@ -1,1 +1,1 @@
-nwbuild -p win32,win64,osx64,linux64 -v 0.12.0 .
+electron-packager . FireNote --platform=darwin,linux,win32 --arch=all --out=build/

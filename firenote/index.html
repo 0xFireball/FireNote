@@ -28,12 +28,14 @@
             <ul id="note-list-nav" class="side-nav">
             </ul>
             <a href="#" data-activates="note-list-nav" class="button-collapse"><i class="material-icons">menu</i></a>
-            <a class="right btn-flat" id="delete-note-btn">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </a>
-            <a class="right btn-flat" id="rename-note-btn">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-            </a>
+            <div id="note-actions">
+                <a class="right btn-flat" id="delete-note-btn">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+                <a class="right btn-flat" id="rename-note-btn">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
 
     </nav>
@@ -55,7 +57,7 @@
                         <div class="icon-block">
                             <h2 class="center light-blue-text"><i class="material-icons">edit</i></h2>
                             <h5 class="center">Start Writing</h5>
-                            <div id="note-actions">
+                            <div id="homepage-actions">
                                 <div class="row">
                                     <div class="center"> <a class="waves-effect waves-light btn btn-large" href="javascript:createNewNote()"><i class="material-icons right">add</i>New Note</a></div>
                                 </div>

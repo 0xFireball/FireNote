@@ -56,8 +56,7 @@ class FireNote {
     switchToNote(sectionId: number, noteId: number) {
         let savedNotebook = this._savedNotebook;
         let currentSection = savedNotebook.sections[sectionId];
-        if (!currentSection)
-        {
+        if (!currentSection) {
             return;
         }
         let currentNote = currentSection.notes[noteId];
@@ -151,6 +150,7 @@ function switchToNote(sectionId: number, noteId: number) {
 
 function createNewNote() {
     fireNote.createNewNote();
+    fireNote.refreshNotesFromCache();
 }
 
 setInterval(function () {

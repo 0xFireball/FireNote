@@ -136,6 +136,7 @@ function switchToNote(sectionId, noteId) {
 }
 function createNewNote() {
     fireNote.createNewNote();
+    fireNote.refreshNotesFromCache();
 }
 setInterval(function () {
     fireNote.saveCurrentEditorContent();
