@@ -1,10 +1,10 @@
 APPNAME="FireNote"
 BUILD_DIR="$HOME/tmp"
-OUTPATH="build/darwin64/"
+OUTPATH="build/darwin64"
 
 echo "Starting OS X - 64-bit build of $APPNAME"
 rm -Rf ./build/darwin64
-mkdir -pv ./$OUTPATH
+mkdir -pv ./$OUTPATH/
 
 echo "Running Electron Packager..."
 electron-packager . $APPNAME --platform=darwin --arch=all --out=$BUILD_DIR/$APPNAME/build/
@@ -15,7 +15,7 @@ cp ./img/$APPNAME.icns $BUILD_DIR/$APPNAME/build/$APPNAME-darwin-x64/$APPNAME.ap
 CURRENTPATH=$(pwd)
 cd $BUILD_DIR/$APPNAME/build/$APPNAME-darwin-x64/
 
-ARCPATH="$CURRENTPATH/$OUTPATH$APPNAME.app.zip"
+ARCPATH="$CURRENTPATH/$OUTPATH/$APPNAME.app.zip"
 echo "Compressing to $ARCPATH"
 zip -r -9 --symlinks $ARCPATH $APPNAME.app > /dev/null
 cd $CURRENTPATH
