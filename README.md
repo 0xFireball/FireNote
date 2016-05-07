@@ -1,5 +1,7 @@
 # FireNote
-FireNote - a minimalistic, cross-platform note editor
+FireNote - a minimalistic, cross-platform note editor. Available for the Web, Windows, OS X, Linux,
+and soon, iOS and Android.
 
-# IN DEVELOPMENT, COMING SOON.
-Expect mobile apps as well!
+![logo](firenote/img/firenote.png)
+
+![screenshot](firenote-sc1.png)
