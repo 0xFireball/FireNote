@@ -156,3 +156,5 @@ function createNewNote() {
 setInterval(function () {
     fireNote.saveCurrentEditorContent();
 }, 1000);
+
+showIntro();
