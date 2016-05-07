@@ -6,6 +6,10 @@
   "main": "../app/index.js",
   "author": "0xFireball",
   "single-instance": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xFireball/FireNote.git"
+  },
   "window": {
     "show": true,
     "position": "center",
