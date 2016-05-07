@@ -1,7 +1,7 @@
 {
   "name": "firenote",
   "productName": "FireNote",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A minimalistic, cross-platform note editor",
   "main": "../app/index.js",
   "author": "0xFireball",
