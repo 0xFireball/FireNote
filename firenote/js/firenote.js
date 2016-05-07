@@ -16,7 +16,7 @@ class FireNote {
             });
         });
         $("#note-list-nav").append('<li><a href="javascript:createNewNote()" class="red lighten-3">New Note</a></li>');
-        $("#note-list-nav").append('<li><a href="javascript:showIntro()" class="red accent-3">Home</a></li>');
+        $("#note-list-nav").append('<li><a href="javascript:showIntro()" class="red accent-1">Home</a></li>');
     }
     loadNotes() {
         this._savedNotebook = this._storageHandle.loadNotebook();
@@ -79,6 +79,14 @@ class FireNote {
         switchToNote(currentSectionId, currentNoteId);
     }
 }
+$.fn.extend({
+    animateCss: function (animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        $(this).addClass('animated ' + animationName).one(animationEnd, function () {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});
 jQuery.fn.selectText = function () {
     var doc = document;
     var element = this[0];
@@ -108,15 +116,24 @@ $("#rename-note-btn").click(function () {
     titleBar.selectText();
     titleBar.keypress(function (e) { return e.which != 13; });
 });
+function reShowEditor() {
+    $("#intro").hide();
+    $("#editing-area")
+        .show()
+        .animateCss('fadeInLeftBig');
+    $("#note-actions").fadeIn();
+}
 function showIntro() {
-    $("#editing-area").fadeOut();
-    $("#intro").fadeIn();
+    $("#editing-area").hide();
+    $("#intro").fadeIn(1000);
     $("#titlebar").html("FireNote");
     $("#note-actions").fadeOut();
 }
 function hideIntro() {
-    $("#editing-area").fadeIn();
-    $("#intro").fadeOut();
+    let intro = $("#intro");
+    if (intro.is(":visible"))
+        intro.fadeOut(1200);
+    $("#editing-area").fadeIn(1200);
     $("#note-actions").fadeIn();
 }
 var currentStorageManager = new StorageManager();
@@ -131,7 +148,7 @@ $("#delete-note-btn").click(function () {
 });
 function switchToNote(sectionId, noteId) {
     fireNote.saveCurrentEditorContent();
-    hideIntro();
+    reShowEditor();
     fireNote.switchToNote(sectionId, noteId);
 }
 function createNewNote() {

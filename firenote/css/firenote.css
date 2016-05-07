@@ -1,0 +1,16 @@
+a, textarea, li {
+    -webkit-app-region: no-drag;
+}
+
+.main-content {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main-scrollable {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    padding-right: 20px;
+}

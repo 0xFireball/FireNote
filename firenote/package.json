@@ -1,11 +1,15 @@
 {
   "name": "firenote",
   "productName": "FireNote",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A minimalistic, cross-platform note editor",
-  "main": "index.js",
+  "main": "../app/index.js",
   "author": "0xFireball",
   "single-instance": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xFireball/FireNote.git"
+  },
   "window": {
     "show": true,
     "position": "center",

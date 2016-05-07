@@ -5,3 +5,5 @@ and soon, iOS and Android.
 ![logo](firenote/img/firenote.png)
 
 ![screenshot](firenote-sc1.png)
+
+More features coming soon!
