@@ -27,3 +27,7 @@ initTinyMce("#editarea");
 shortcut.add("Ctrl+Space", function() {
     $('.button-collapse').sideNav('show');
 });
+
+$("#showNoteListBtn").click(function() {
+  $('.button-collapse').sideNav('show');
+});
