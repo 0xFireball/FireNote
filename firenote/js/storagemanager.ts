@@ -1,8 +1,10 @@
 /// <reference path="common.ts" />
+/// <reference path="options.ts" />
 
 //Storage manager - Manage storage across scopes (web/nodejs/mobile)
 
 let savedNotesLocalStorageKey = "savednotes";
+//The directory where notes are stored
 
 enum NoteStorageType {
     LocalStorage,
@@ -35,7 +37,16 @@ class NotebookLoader {
                 savedNoteData = localStorage.getItem(savedNotesLocalStorageKey);
                 break;
             case NoteStorageType.FileStorage:
-                savedNoteData = ""; //Not yet implemented
+                var fs = require("fs");
+                var osenv = require("osenv");
+                let noteDirectoryOnDisk = osenv.home() + "/.firenote/";
+                let notebookDataFile = noteDirectoryOnDisk + savedNotesLocalStorageKey;
+                if (!fs.existsSync(noteDirectoryOnDisk)) {
+                    fs.mkdirSync(noteDirectoryOnDisk);
+                }
+                if (fs.existsSync(notebookDataFile)) {
+                    savedNoteData = fs.readFileSync(notebookDataFile, "utf8");
+                }
                 break;
         }
         if (savedNoteData) {
@@ -56,7 +67,14 @@ class NotebookLoader {
                 localStorage.setItem(savedNotesLocalStorageKey, serializedNotebook);
                 break;
             case NoteStorageType.FileStorage:
-
+                var fs = require("fs");
+                var osenv = require("osenv");
+                let noteDirectoryOnDisk = osenv.home() + "/.firenote/";
+                let notebookDataFile = noteDirectoryOnDisk + savedNotesLocalStorageKey;
+                if (!fs.existsSync(noteDirectoryOnDisk)) {
+                    fs.mkdirSync(noteDirectoryOnDisk);
+                }
+                fs.writeFileSync(notebookDataFile, serializedNotebook); //asynchronously write file
                 break;
         }
     }
@@ -67,7 +85,7 @@ class StorageManager {
     private initialize() {
         if (is_nw()) {
             //Desktop app, use file storage
-
+            this._notebookLoader = new NotebookLoader(NoteStorageType.FileStorage);
         }
         else {
             //Web/Mobile app, use `localStorage`

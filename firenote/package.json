@@ -1,19 +1,22 @@
 {
-    "name": "firenote",
-    "version": "1.0.0",
-    "description": "A minimalistic, cross-platform note editor",
-    "main": "index.html",
-    "author": "0xFireball",
-    "single-instance": true,
-    "window": {
-        "show": true,
-        "position": "center",
-        "width": 800,
-        "min_width": 480,
-        "min_height": 320,
-        "height": 600,
-        "toolbar": false,
-        "icon": "img/firenote.png"
-    },
-    "license": "GPL-3.0"
+  "name": "firenote",
+  "version": "1.0.0",
+  "description": "A minimalistic, cross-platform note editor",
+  "main": "index.html",
+  "author": "0xFireball",
+  "single-instance": true,
+  "window": {
+    "show": true,
+    "position": "center",
+    "width": 800,
+    "min_width": 480,
+    "min_height": 320,
+    "height": 600,
+    "toolbar": false,
+    "icon": "img/firenote.png"
+  },
+  "license": "GPL-3.0",
+  "dependencies": {
+    "osenv": "^0.1.3"
+  }
 }
