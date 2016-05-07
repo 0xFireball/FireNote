@@ -29,15 +29,20 @@ class NotebookLoader {
     }
     loadNotebook(): Notebook {
         let existingNotes: Notebook = null;
+        let savedNoteData: string = null;
         switch (this._noteStorageType) {
             case NoteStorageType.LocalStorage:
-                let savedNoteData: string = localStorage.getItem(savedNotesLocalStorageKey);
-                if (!savedNoteData)
-                    break;
-                existingNotes = SerializationHelper.toInstance(new Notebook(), savedNoteData);
+                savedNoteData = localStorage.getItem(savedNotesLocalStorageKey);
+                break;
+            case NoteStorageType.FileStorage:
+                savedNoteData = ""; //Not yet implemented
                 break;
         }
-        if (!existingNotes) {
+        if (savedNoteData) {
+            //Saved notes exist
+            existingNotes = SerializationHelper.toInstance(new Notebook(), savedNoteData);
+        }
+        else {
             //reset notes and reload notebook
             this.reinitializeNotebook();
             existingNotes = this.loadNotebook();
@@ -46,7 +51,14 @@ class NotebookLoader {
     }
     saveNotebook(notebookToSave: Notebook) {
         let serializedNotebook: string = SerializationHelper.serialize(notebookToSave);
-        localStorage.setItem(savedNotesLocalStorageKey, serializedNotebook);
+        switch (this._noteStorageType) {
+            case NoteStorageType.LocalStorage:
+                localStorage.setItem(savedNotesLocalStorageKey, serializedNotebook);
+                break;
+            case NoteStorageType.FileStorage:
+
+                break;
+        }
     }
 }
 
