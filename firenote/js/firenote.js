@@ -109,13 +109,15 @@ $("#rename-note-btn").click(function () {
     titleBar.keypress(function (e) { return e.which != 13; });
 });
 function showIntro() {
-    $("#editing-area").hide();
-    $("#intro").show();
+    $("#editing-area").fadeOut();
+    $("#intro").fadeIn();
     $("#titlebar").html("FireNote");
+    $("#note-actions").fadeOut();
 }
 function hideIntro() {
-    $("#editing-area").show();
-    $("#intro").hide();
+    $("#editing-area").fadeIn();
+    $("#intro").fadeOut();
+    $("#note-actions").fadeIn();
 }
 var currentStorageManager = new StorageManager();
 var fireNote = new FireNote(currentStorageManager);

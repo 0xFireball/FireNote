@@ -119,14 +119,16 @@ $("#rename-note-btn").click(function () {
 
 
 function showIntro() {
-    $("#editing-area").hide();
-    $("#intro").show();
+    $("#editing-area").fadeOut();
+    $("#intro").fadeIn();
     $("#titlebar").html("FireNote");
+    $("#note-actions").fadeOut();
 }
 
 function hideIntro() {
-    $("#editing-area").show();
-    $("#intro").hide();
+    $("#editing-area").fadeIn();
+    $("#intro").fadeOut();
+    $("#note-actions").fadeIn();
 }
 
 var currentStorageManager = new StorageManager();
