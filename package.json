@@ -1,0 +1,11 @@
+{
+	"build": {
+	  "app-bundle-id": "com.0xFireball.FireNote",
+	  "app-category-type": "FireNote.productivity.notes"
+	},
+	"scripts": {
+	  "postinstall": "install-app-deps",
+	  "pack": "build",
+	  "dist": "build"
+	}
+}
