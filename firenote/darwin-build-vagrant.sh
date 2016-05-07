@@ -14,7 +14,9 @@ cp ./img/$APPNAME.icns BUILD_DIR$APPNAME/build/$APPNAME-darwin-x64/$APPNAME.app/
 CURRENTPATH=$(pwd)
 cd BUILD_DIR$APPNAME/build/$APPNAME-darwin-x64/
 
-zip -r -9 --symlinks $CURRENTPATH/build/darwin64/$APPNAME.app.zip $APPNAME.app
+ARCPATH="$CURRENTPATH/build/darwin64/$APPNAME.app.zip"
+echo "Compressing to $ARCPATH"
+zip -r -9 --symlinks $ARCPATH $APPNAME.app
 cd $CURRENTPATH
 
 echo "Cleaning Up..."
