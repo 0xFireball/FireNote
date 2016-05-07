@@ -1,2 +1,24 @@
 language:
   - ruby
+
+matrix:
+  include:
+    - os: linux
+
+cache:
+  directories:
+  - node_modules
+  - firenote/node_modules
+  - $HOME/.electron
+  - $HOME/.npm
+
+install:
+  - nvm install $NODE_VERSION
+  - npm install npm -g
+  - npm prune
+  - npm install electron-packager -g
+  - npm install
+
+script:
+  - cd firenote
+  - ./darwin-build-vagrant.sh
