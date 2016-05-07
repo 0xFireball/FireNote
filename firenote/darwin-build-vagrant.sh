@@ -9,7 +9,7 @@ mkdir -pv ./$OUTPATH
 echo "Running Electron Packager..."
 electron-packager . $APPNAME --platform=darwin --arch=all --out=$BUILD_DIR$APPNAME/build/
 echo "Replacing Icon..."
-rm $$BUILD_DIR$APPNAME/build/$APPNAME-darwin-x64/$APPNAME.app/Contents/Resources/electron.icns
+rm $BUILD_DIR$APPNAME/build/$APPNAME-darwin-x64/$APPNAME.app/Contents/Resources/electron.icns
 cp ./img/$APPNAME.icns $BUILD_DIR$APPNAME/build/$APPNAME-darwin-x64/$APPNAME.app/Contents/Resources/electron.icns
 
 CURRENTPATH=$(pwd)
